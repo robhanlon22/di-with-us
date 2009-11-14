@@ -2,4 +2,4 @@
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'di-with-us.rb')
 
-DIWithUs::Twitter.new.update_status(DIWithUs::Generator.generate)
+DiWithUs::Twitter.new.update_status(DiWithUs::Generator.generate)

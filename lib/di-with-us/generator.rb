@@ -1,7 +1,9 @@
 require 'rubygems'
+
+gem 'httparty', '= 0.4.3'
 require 'httparty'
 
-module DIWithUs
+module DiWithUs
   class Generator
     VENUE = %w[Healthy Times Fun Club]
     THESAURUS_URL = 'http://words.bighugelabs.com/api/2'
@@ -15,8 +17,8 @@ module DIWithUs
 
     def self.generate
       VENUE.map { |word|
-        result = HTTParty.get("#{THESAURUS_URL}/#{@api_key}/#{URI.encode(word)}/json")
-        result.to_a.shuffle.first[1]['syn'].shuffle.first.split.map { |str| str.capitalize }.join(' ')
+        r = HTTParty.get("#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json")
+        r.to_a.shuffle.first[1]['syn'].shuffle.first.split.map { |str| str.capitalize }.join(' ')
       }.join(' ')
     end
   end
