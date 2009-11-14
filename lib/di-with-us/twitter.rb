@@ -1,8 +1,5 @@
-begin
-  require 'twitter'
-rescue LoadError
-  abort "Hey jughead, sudo gem install twitter!"
-end
+require 'rubygems'
+require 'twitter'
 
 module DiWithUs
   class Twitter
