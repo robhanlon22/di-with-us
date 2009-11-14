@@ -5,13 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "di-with-us"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = gem.description = %Q{Uses the Big Huge Thesaurus API to generate random DIY venue names}
     gem.email = "robhanlon@gmail.com"
     gem.homepage = "http://github.com/ohwillie/di-with-us"
     gem.authors = ["Rob Hanlon"]
-    gem.add_development_dependency "rspec"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency 'httparty'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
