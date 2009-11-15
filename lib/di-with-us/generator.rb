@@ -3,6 +3,13 @@ require 'rubygems'
 gem 'httparty', '= 0.4.3'
 require 'httparty'
 
+# look don't worry about it
+class Array
+  def give_me_a_random_element
+    self[rand(size)]
+  end
+end
+
 module DiWithUs
   class Generator
     VENUE = %w[Healthy Times Fun Club]
@@ -18,7 +25,7 @@ module DiWithUs
     def self.generate
       VENUE.map { |word|
         r = HTTParty.get("#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json")
-        r.to_a.shuffle.first[1]['syn'].shuffle.first.split.map { |str| str.capitalize }.join(' ')
+        r.to_a.shuffle.first[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
       }.join(' ')
     end
   end
