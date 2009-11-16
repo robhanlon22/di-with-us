@@ -42,7 +42,7 @@ module DiWithUs
         url = "#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json"
         r = HTTParty.get(url)
         r.to_a.give_me_a_random_element[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
-      }.join(' ')
+      }.join(' ') + " (via #{v})"
     end
   end
 end
