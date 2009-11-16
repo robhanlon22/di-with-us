@@ -33,13 +33,14 @@ module DiWithUs
         '..',
         '..',
         'config',
-        'big-huge-thesaurus.yml')))['api-key']
+        'big-huge-thesaurus.yml')))['api_key']
 
     def self.generate
       v = VENUES.shuffle.first
       v.split.map { |word|
         next word if IGNORE.include? word.downcase
-        r = HTTParty.get("#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json")
+        url = "#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json"
+        r = HTTParty.get(url)
         r.to_a.give_me_a_random_element[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
       }.join(' ')
     end
