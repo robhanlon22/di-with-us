@@ -40,7 +40,7 @@ module DiWithUs
       v.split.map { |word|
         next word if IGNORE.include? word.downcase
         r = HTTParty.get("#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json")
-        r.to_a.shuffle.first[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
+        r.to_a.give_me_a_random_element[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
       }.join(' ')
     end
   end
