@@ -20,12 +20,13 @@ module DiWithUs
         '..',
         '..',
         'config',
-        'big-huge-thesaurus.yml')))['api-key']
+        'big-huge-thesaurus.yml')))['api_key']
 
     def self.generate
       VENUE.map { |word|
-        r = HTTParty.get("#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json")
-        r.to_a.shuffle.first[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
+        url = "#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json"
+        r = HTTParty.get(url)
+        r.to_a.give_me_a_random_element[1]['syn'].give_me_a_random_element.split.map { |str| str.capitalize }.join(' ')
       }.join(' ')
     end
   end
