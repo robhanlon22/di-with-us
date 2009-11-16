@@ -6,7 +6,7 @@ require 'httparty'
 # look don't worry about it
 class Array
   def give_me_a_random_element
-    self[rand(size)]
+    self[rand(size-1)]
   end
 end
 
