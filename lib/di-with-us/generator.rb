@@ -36,7 +36,7 @@ module DiWithUs
         'big-huge-thesaurus.yml')))['api_key']
 
     def self.generate
-      v = VENUES.shuffle.first
+      v = VENUES.give_me_a_random_element
       v.split.map { |word|
         next word if IGNORE.include? word.downcase
         url = "#{THESAURUS_URL}/#{API_KEY}/#{URI.encode(word)}/json"
